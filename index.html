@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Filter for a List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        input {
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin: 5px 0;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Search Filter for Fruits</h1>
+    <input 
+        type="text" 
+        id="searchBar" 
+        placeholder="Search for a fruit..." 
+        oninput="filterList()"
+    >
+    <ul id="fruitList">
+        <li>Apple</li>
+        <li>Banana</li>
+        <li>Cherry</li>
+        <li>Date</li>
+        <li>Grape</li>
+        <li>Kiwi</li>
+        <li>Mango</li>
+        <li>Orange</li>
+        <li>Papaya</li>
+        <li>Strawberry</li>
+    </ul>
+
+    <script>
+        function filterList() {
+            const searchTerm = document
+                .getElementById("searchBar")
+                .value.toLowerCase(); 
+            const items = document.querySelectorAll("#fruitList li");
+
+            items.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                if (text.includes(searchTerm)) {
+                    item.style.display = "block"; 
+                } else {
+                    item.style.display = "none"; 
+                }
+            });
+        }
+    </script>
+</body>
+</html>
